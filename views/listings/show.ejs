@@ -1,0 +1,92 @@
+<% layout('/layouts/boilerplate') -%>
+<script>
+  const mapKey=  "<%= process.env.MAP_API_KEY %>";
+  const coordinates = "<%- JSON.stringify(listing.coordinates) %>"; // Pass coordinates from server
+
+</script>
+<div class="row mt-3">
+  <div class="col-md-8 offset-2">
+    <h3><%= listing.title %></h3>
+    <div class="card">
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top show-image mb-3 shadow bg-white rounded"
+        alt="show-img"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          <p class="card-text"><i>By: &nbsp;<%= listing.owner.username %></i></p>
+          <b>Price:</b> &#8377;<%= Number(listing.price).toLocaleString("en-IN") %>
+        </p>
+        <p class="card-text"><b>Description:</b> <%= listing.description %></p>
+        <p class="card-text"><b>Location:</b> <%= listing.location %></p>
+        <p class="card-text"><b>Country:</b> <%= listing.country %></p>
+        <% if(currUser && listing.owner._id.equals(currUser._id)){ %>        
+          <div class="show-btns">
+            <a href="/listings/<%= listing._id %>/edit" class="btn btn-primary">Edit</a>
+            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+              <button type="submit" class="btn dte-btn">Delete</button>
+            </form>
+          </div>
+       <% } %>
+        
+        <div class="col-md-10">
+          <hr />
+          <% if(currUser){ %>
+
+          <h1>Leave Review</h1>
+          <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
+            <div class="mb-3">
+              <label class="form-label">Rating</label>
+              <div class="star-rating">
+                <% for (let i = 5; i >= 1; i--) { %>
+                  <input type="radio" id="star-<%= i %>" name="review[rating]" value="<%= i %>" class="form-check-input" />
+                  <label for="star-<%= i %>" class="star">&#9733;</label>
+                <% } %>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="comment" class="form-label">Comment</label>
+              <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+              <div class="invalid-feedback">Please add some comments for review</div>
+            </div>
+            <button class="btn btn-outline-dark mt-3">Submit</button>
+          </form>
+        <% } %>
+        <% if(listing.reviews.length>0) { %>
+          <div class="row reviews-container">
+              <p><b>All Reviews</b></p>
+              <% for (let review of listing.reviews) { %>
+                <div class="card col-md-6 mb-3">
+                  <div class="card review-card shadow-sm">
+                    <div class="card-body">
+                      <h5 class="card-title">@<%= review.author.username %></h5>
+                      <div class="star-rating-display">
+                        <% for (let i = 1; i <= 5; i++) { %>
+                          <% if (i <= review.rating) { %>
+                            <span class="star filled">&#9733;</span> <!-- Filled star -->
+                            <% } else { %>
+                              <span class="star">&#9734;</span> <!-- Empty star -->
+                              <% } %>
+                              <% } %>
+                              <p class="card-text mb-3"><%= review.comment %></p>
+                      </div>
+                      <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                        <button type="submit" class="btn dte-btn">Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+            </div>
+       <% } %>
+          <div class="mb-3">
+            <h3>Where you'll be</h3>
+            <div id="map"></div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script src="/js/map.js"></script>

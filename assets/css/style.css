@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{   
+
+  font-family: "Plus Jakarta Sans", serif !important;
+  /* font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal; */
+}
+html, body {
+    height: 100%; /* Ensures the body and html cover the full height of the viewport */
+    margin: 0;    /* Removes any default margins */
+    display: flex;
+    flex-direction: column; /* Makes the layout column-based */
+}
+
+.card.border-custom {
+  position: relative;
+  border: none !important;
+  background: white;
+}
+
+.card.border-custom::before {
+  content: "";
+  position: absolute;
+  top: -5px;  /* Increased size for larger border */
+  left: -5px;  /* Increased size for larger border */
+  right: -5px;  /* Increased size for larger border */
+  bottom: -5px;  /* Increased size for larger border */
+  background: linear-gradient(90deg, 
+    #45f3ff,
+    #ff2770,
+    #45f3ff,
+    #ff2770
+  );
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: animate 4s linear infinite;
+  border-radius: 10px;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keep card content on white background */
+.card.border-custom .card-body {
+  background: white;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+}
+.container {
+    flex: 1; /* Pushes the footer down by taking available space */
+}
+
+footer {
+    flex-shrink: 0; /* Prevents the footer from shrinking */
+}
+
+.navbar{
+    height: 5.3rem;
+    background-color: white !important;
+}
+.fa-airbnb{
+    color:#fe424d;
+    font-size: 2rem;
+}
+.nav-link{
+    color:#222222 !important;
+    
+}
+.container{
+    flex:1 !important;
+}
+.f-info-links a{
+    text-decoration: none !important;
+    color: #222222 !important;
+}
+.f-info-links a:hover{
+    text-decoration: underline !important;
+}
+.f-info-links, .f-info-socials{
+width: 100%;
+
+}
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+.f-info{
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    align-items: space-evenly;
+    padding: 1rem;
+    
+}  
+footer {
+    flex-shrink: 0; /* Prevent the footer from shrinking */
+} 
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+/* Star Rating Styling */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse; /* Right-to-left alignment */
+    justify-content: center;
+  }
+  
+  .star-rating input {
+    display: none; /* Hide radio buttons */
+  }
+  
+  .star-rating label {
+    font-size: 2rem;
+    color: #ccc; /* Unselected star color */
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .star-rating input:checked ~ label {
+    color: #f39c12; /* Selected star color (e.g., gold) */
+  }
+  
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: #f39c12; /* Hover effect */
+  }
+  /* Star Rating Display Styling */
+.star-rating-display {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 1.5rem; /* Adjust star size */
+    color: #ccc; /* Default color for empty stars */
+  }
+  
+  .star.filled {
+    color: #fdd835; /* Yellow color for filled stars */
+  }
+  
+.review-card {
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Spacing inside the card */
+    background-color: #f9f9f9; /* Subtle background color */
+  }
+  
+  .review-card .card-title {
+    font-size: 1.25rem; /* Slightly larger font for the name */
+    font-weight: bold; /* Bold for emphasis */
+  }
+  
+  .review-card .card-text {
+    font-size: 1rem; /* Regular font size */
+    color: #555; /* Gray text for contrast */
+  }
+  
+  .reviews-container {
+    margin-top: 20px; /* Add space before the reviews section */
+  }
+  
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0px !important;
+}
+.card-text p{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none !important;
+}
+.card-img-overlay{
+    opacity:0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+.add-btn{
+    background-color:#fe424d !important;
+    color: white !important;
+    border: none;
+}
+.btns{
+display: flex;
+margin-top: 1rem;
+
+}
+.dte-btn{
+    background-color:#fe424d !important;
+    color: white !important;
+    margin-left: 1rem;
+    border: none; 
+}
+.show-image{
+    height: 50vh;
+}
+.show-btns{
+    display: flex;
+    margin-top: 1rem;
+
+}
+/* body.create-listing-page {
+  background-color: #f8f9fa;
+  font-family: "Plus Jakarta Sans", serif !important;
+} */
+ /* Styles specific to the signup form */
+
+
+ .signup-form {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* padding: 1.5rem; Reduced padding for smaller form */
+  max-width: 620px; /* Increased width by 30px */
+  height: calc(100% - 30px); /* Decreased height by 20px */
+  margin: 20px auto; /* Center the form and add space on top and bottom */
+}
+.signup-form .form-outline input {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+.signup-form .form-outline label {
+  font-size: 12px;
+  color: #495057;
+}
+.signup-form .form-check-label a {
+  color: #007bff;
+  text-decoration: none;
+}
+.signup-form .form-check-label a:hover {
+  text-decoration: underline;
+}
+.signup-form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.signup-form .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+.signup-form img {
+  border-radius: 10px;
+}
+.create-listing-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 50px auto;
+}
+.create-listing-container h3 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+.create-listing-container .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+.create-listing-container .btn.add-btn {
+  background-color: #ff5a5f;
+  border-color: #ff5a5f;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.create-listing-container .btn.add-btn:hover {
+  background-color: #e04848;
+}
+.edit-listing-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 50px auto;
+}
+.edit-listing-container h3 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+.edit-listing-container .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+.edit-listing-container .btn.edit-btn {
+  background-color: #ff5a5f;
+  border-color: #ff5a5f;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.edit-listing-container .btn.edit-btn:hover {
+  background-color: #e04848;
+}
+.edit-listing-container .btn.back-btn {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.edit-listing-container .btn.back-btn:hover {
+  background-color: #5a6369;
+}
+/* .btn-back{
+    background-color:#222222 !important;
+    color: white !important;
+    margin-left: 1rem;
+    border: none; 
+} */
+
+#map { 
+height: 350px;
+width: 130vh; 
+background-color: #45f3ff;
+}
