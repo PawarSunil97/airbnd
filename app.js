@@ -42,7 +42,7 @@ async function main() {
 const store = MongoStore.create({
   mongoUrl:db_url,
   crypto: {
-    secret: process.env.SECRATE
+    secret: process.env.SECRET
   },
   touchAfter: 24 * 3600
 })
@@ -52,7 +52,7 @@ store.on("error",()=>{
 })
 const sessionOption={
   store,
-  secret:process.env.SECRATE,
+  secret:process.env.SECRET,
   resave: false,
   saveUninitialized:true,
   cookie:{
@@ -80,11 +80,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-  res.locals.success = req.flash("success"); // Use res.locals
-  res.locals.error = req.flash("error"); 
-  res.locals.currUser= req.user;
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  res.locals.currUser = req.user || null; // Ensure currUser is set even if not logged in
   next();
 });
+
 
 
 // Use separate routes for listings and reviews
