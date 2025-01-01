@@ -3,17 +3,19 @@ const Listing = require("../models/listing");
 module.exports.Index = async (req, res) => {
   const { q } = req.query; // Extract search query
   let AllListing;
-  if(q){
+
+  if (q) {
     const regex = new RegExp(q, "i");
     AllListing = await Listing.find({
       $or: [{ title: regex }]
     });
-  }else{
-
-     AllListing = await Listing.find({});
+  } else {
+    AllListing = await Listing.find({});
   }
-  res.render("listings/index", { AllListing, searchQuery: q  });
+
+  res.render("listings/index", { AllListing, searchQuery: q || '' });
 };
+
 module.exports.renderNewForm = (req, res) => {
   res.render("listings/new");
 };

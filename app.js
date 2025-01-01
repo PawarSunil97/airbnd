@@ -82,6 +82,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.searchQuery = req.query.q || ""; // Default to an empty string if not present
   res.locals.currUser = req.user || null; // Ensure currUser is set even if not logged in
   next();
 });
