@@ -93,6 +93,11 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewRouter); // Mount the reviews route with id parameter
 app.use("/",userRouter);
 
+// Add this route before `app.all("*")`
+app.get("/", (req, res) => {
+  res.redirect("/listings"); // Redirect to the listings index page
+});
+
 // Page not found error
 app.all("*", (req, res, next) => {
   next(new ExpressErrors(404, "Page not found"));
