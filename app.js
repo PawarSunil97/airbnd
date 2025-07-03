@@ -36,7 +36,10 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(db_url);
+  await mongoose.connect(db_url,{
+    useNewUrlParser: true,
+  useUnifiedTopology: true,
+  });
 }
 
 const store = MongoStore.create({
